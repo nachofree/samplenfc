@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 package com.example.sample_with_sdk;
 
 
@@ -145,7 +140,10 @@ public class WaveshareNFCWriter {
 
                                                         for(int var47 = 0; var47 < 8; ++var47) {
                                                             var28 = (byte)(var28 << 1);
-                                                            if ((var6[var47 + var40 * 8 + var32 * 128] & 255) > 128) {
+//                                                            int pixelIndex = var47 + var40 * 8 + var32 * 128;
+                                                            int pixelIndex = var47 + var40 * 8 + var32 * 122;
+                                                            // FIX: Add bounds checking
+                                                            if (pixelIndex < var6.length && (var6[pixelIndex] & 255) > 128) {
                                                                 var28 = (byte)(var28 | 1);
                                                             }
                                                         }
@@ -161,7 +159,9 @@ public class WaveshareNFCWriter {
 
                                                         for(int var48 = 0; var48 < 8; ++var48) {
                                                             var29 = (byte)(var29 << 1);
-                                                            if ((var6[var48 + var41 * 8 + var33 * this.d[var2]] & 255) > 128) {
+                                                            int pixelIndex = var48 + var41 * 8 + var33 * this.d[var2];
+                                                            // FIX: Add bounds checking
+                                                            if (pixelIndex < var6.length && (var6[pixelIndex] & 255) > 128) {
                                                                 var29 = (byte)(var29 | 1);
                                                             }
                                                         }
@@ -180,12 +180,16 @@ public class WaveshareNFCWriter {
                                                     for(int var49 = 0; var49 < 8; ++var49) {
                                                         var30 = (byte)(var30 << 1);
                                                         var31 = (byte)(var31 << 1);
-                                                        if (var6[var49 + var42 * 8 + var34 * this.d[var2]] == -1) {
-                                                            var30 = (byte)(var30 | 1);
-                                                        }
+                                                        int pixelIndex = var49 + var42 * 8 + var34 * this.d[var2];
+                                                        // FIX: Add bounds checking
+                                                        if (pixelIndex < var6.length) {
+                                                            if (var6[pixelIndex] == -1) {
+                                                                var30 = (byte)(var30 | 1);
+                                                            }
 
-                                                        if ((var7[var49 + var42 * 8 + var34 * this.d[var2]] & 255) > 128) {
-                                                            var31 = (byte)(var31 | 1);
+                                                            if ((var7[pixelIndex] & 255) > 128) {
+                                                                var31 = (byte)(var31 | 1);
+                                                            }
                                                         }
                                                     }
 
