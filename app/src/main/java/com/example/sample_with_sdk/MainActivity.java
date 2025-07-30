@@ -73,7 +73,14 @@ public class MainActivity extends Activity {
 
         // Initialize bitmap - start with simple diagnostic pattern
 //        bmp_send = createDiagnosticBitmap(currentPattern);
-        bmp_send = createTextBitmap("Hello World!", 30);
+//        bmp_send = createTextBitmap("Hello World!", 30);
+//        bmp_send = createMultiLineTextBitmap(new String[]{"Hello", "E-Paper", "Display"}, 24);
+
+// Option 3: Mixed content with borders and graphics
+//        bmp_send = createMixedContentBitmap();
+
+// Option 4: Dynamic content (time/date)
+        bmp_send = createCustomTextBitmap();
         setStatusBody("Setup complete. NFC enabled.\nPattern " + currentPattern + " ready.\nHold phone near NFC tag to start.");
 
         // Add logging
